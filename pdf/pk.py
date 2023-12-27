@@ -41,10 +41,11 @@ Tips:
 """
 import os
 import sys
+
 cwd = os.getcwd()
 sys.path.insert(0, os.path.split(cwd)[0])
-#increase the capacity of the stack,
-#otherwise will cause: maximum recursion depth exceeded while calling a Python object
+# increase the capacity of the stack,
+# otherwise will cause: maximum recursion depth exceeded while calling a Python object
 sys.setrecursionlimit(10000)
 
 from pdf.kit import merge
@@ -53,7 +54,7 @@ from docopt import docopt
 
 arguments = docopt(__doc__, version='v1.0.0')
 
-#options mapping
+# options mapping
 opt_func = {
     '--merge': merge,
     '--mark': add_bookmarks

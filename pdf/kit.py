@@ -10,9 +10,11 @@ def merge(files):
     :param files: the pathname of the PDFs
     :return: None
     """
+    pdf_files = []
+    output_pdf = None
     try:
         pdf_files = [open(pathname, mode='rb') for pathname in files]
-        merger = PyPDF2.PdfFileMerger()
+        merger = PyPDF2.PdfMerger()
         for pdf in pdf_files:
             merger.append(pdf)
         output_pdf = open('merge.pdf', mode='wb')
@@ -23,7 +25,7 @@ def merge(files):
     finally:
         for pdf in pdf_files:
             pdf.close()
-        if not output_pdf.closed:
+        if output_pdf is not None and not output_pdf.closed:
             output_pdf.close()
 
 
